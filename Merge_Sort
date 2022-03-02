@@ -1,0 +1,42 @@
+public class HelloWorld{
+     public static int[] merge(int[] left,int[] right){
+         int size = left.length+right.length;
+         int i=0;
+         int j=0;
+         int k=0;
+         int[] ans= new int[size];
+         while(size>0){
+             int e1 = i<=left.length-1?left[i]:Integer.MAX_VALUE;
+             int e2 = j<=right.length-1?right[j]:Integer.MAX_VALUE;
+             if(e1<e2){
+                 ans[k]=e1;
+                 i++;
+             }
+             else{
+                 ans[k]=e2;
+                 j++;
+             }
+             k++;
+             size--;
+         }
+         return ans;
+     }
+     public static int[] MergeSort(int[] arr,int lo,int hi){
+         if(lo==hi){
+             int [] a = new int[1];
+             a[0]=arr[lo];
+             return a;
+         }
+         int mid= (lo+hi)/2;
+         int[] left = MergeSort(arr,lo,mid);
+         int[] right= MergeSort(arr,mid+1,hi);
+         int[] res = merge(left,right);
+         return res;
+     }
+     public static void main(String []args){
+        int[] arr ={10,12,5,4,11,6,8,25,35};
+        arr = MergeSort(arr,0,arr.length-1);
+        for(int ele:arr)System.out.println(ele);
+        //System.out.println("Hello World");
+     }
+}
