@@ -1,0 +1,24 @@
+import java.util.*;
+public class HelloWorld{
+    
+    public static void Dictionary(int n,String ans){
+        System.out.println(ans);
+        for(int i=0;i<=9;i++){
+            ans+=i;
+            int temp=Integer.parseInt(ans);
+            if(temp<=n)
+            Dictionary(n,ans);
+            ans=ans.substring(0,ans.length()-1);
+        }
+    }
+     public static void main(String []args){
+        System.out.println("Hello World");
+       // String a ="abcd";
+        //String b= a.substring(0,a.length()-1);
+       // System.out.print(b);
+        
+        for(int i=1;i<=9;i++){
+            Dictionary(153,""+i);    
+        }
+     }
+}
