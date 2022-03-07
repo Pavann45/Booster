@@ -11,6 +11,39 @@ public class HelloWorld{
             ans=ans.substring(0,ans.length()-1);
         }
     }
+  
+    public static boolean isPalindrome(String a,int i,int j){
+        while(i<=j){
+            if(a.charAt(i)!=a.charAt(j))return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+    public static ArrayList<String> allPalindromes(String s,String ans,int st){
+        if(st==s.length()){
+            ArrayList<String> rs= new ArrayList<>();
+            return rs;
+        }
+        ArrayList<String> rres= new ArrayList<>();
+        //ArrayList<ArrayList<String>> mres= new ArrayList<>();
+        for(int i=st;i<s.length();i++){
+            for(int j=i;j<s.length();j++){
+                if(isPalindrome(s,i,j)){
+                    if(rres.contains(s.substring(i,j+1))==false)
+                    rres.add(s.substring(i,j+1));
+                }
+            }
+        }
+        ArrayList<String> mres=allPalindromes(s,ans,st+1);
+        for(String m:mres){
+            if(rres.contains(m)==false)
+            rres.add(m);
+        }
+        System.out.println(rres+" ");
+        //mres.add(rres);
+        return rres;
+    }
      public static void main(String []args){
         System.out.println("Hello World");
        // String a ="abcd";
@@ -18,7 +51,12 @@ public class HelloWorld{
        // System.out.print(b);
         
         for(int i=1;i<=9;i++){
-            Dictionary(153,""+i);    
+            Dictionary(20,""+i);    
         }
+        String s1="nitin";
+        ArrayList<String> arr= new ArrayList<>();
+        arr=allPalindromes(s1,"",0);
+        for(String s:arr)
+        System.out.println(s+" ");
      }
 }
