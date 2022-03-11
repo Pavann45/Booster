@@ -1,0 +1,18 @@
+public class HelloWorld{
+    
+    public static void PrintPaths(int[] jumps,int n,String ans){
+        if(n==0){
+            System.out.println(ans);
+            return;
+        }
+        for(int i=0;i<jumps.length;i++){
+            if(n-jumps[i]>=0)
+            PrintPaths(jumps,n-jumps[i],ans+jumps[i]);
+        }
+    }
+     public static void main(String []args){
+        System.out.println("Hello World");
+        int[] jumps = {1,2,3};
+        PrintPaths(jumps,4,"");
+     }
+}
