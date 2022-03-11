@@ -1,0 +1,35 @@
+public class HelloWorld{
+    
+    //public static String[] num = {}
+    public static int[] rdir={0,-1,0,1,0};
+    public static int[] cdir={0,0,1,0,-1};
+    public static void get(char[][] ch,int i,int j,int n,String ans,char check){
+        if(n==0 && ans.charAt(0)==check){
+            System.out.println(ans);
+            return;
+        }
+        if(n==0)return;
+        for(int dir=0;dir<5;dir++){
+            int rr= i+rdir[dir];
+            int cc= j+cdir[dir];
+            if(rr>=0 && cc>=0 && rr<ch.length && cc<ch[0].length && ch[rr][cc]!='*' && ch[rr][cc]!='#'){
+                get(ch,rr,cc,n-1,ans+ch[rr][cc],check);
+            }
+        }
+    }
+     public static void main(String []args){
+        System.out.println("Hello World");
+        char keypad[][] = {{'1','2','3'},
+                        {'4','5','6'},
+                        {'7','8','9'},
+                        {'*','0','#'}};
+        int n=4;
+                        
+        for(int i=0;i<keypad.length;i++){
+            for(int j=0;j<keypad[0].length;j++){
+                get(keypad,i,j,n,"",keypad[i][j]);
+                System.out.println("============");
+            }
+        }
+     }
+}
