@@ -1,0 +1,23 @@
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+        System.out.println("Hello World");
+        int[] value={60,100,120};
+        int[] weight = {10,20,30};
+        int cap = 50;
+        int ans =knapsack(0,value,weight,0,cap,0);
+        System.out.println(ans);
+     }
+     public static int knapsack(int idx,int[] v,int[] w,int curr_cap,int cap,int total_value){
+        if(idx==w.length){
+            return total_value;
+        }
+        int ans=0;
+        int ans1=0;
+        if(curr_cap+w[idx]<=cap)
+        ans=knapsack(idx+1,v,w,curr_cap+w[idx],cap,total_value+v[idx]);
+        ans1=knapsack(idx+1,v,w,curr_cap,cap,total_value);
+        return Math.max(ans,ans1);
+     }
+}
